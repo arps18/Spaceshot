@@ -10,6 +10,26 @@
     padding: 0;
 }
 
+.btn {
+    background-color: transparent;
+    border-color: white;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    font-weight: bold;
+}
+
+#desc {
+    background-color: black;
+    opacity: 0.5;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
 body {
     margin: 0;
     background-color: #17182f;

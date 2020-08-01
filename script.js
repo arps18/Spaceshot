@@ -454,7 +454,9 @@ $(document).ready(function() {
         .then(response => {
             yearList = response.data.data;
             $.each(yearList, function(index, value) {
-                $('#list-btn').append('<button type="button" class="btn btn-primary mr-4" onclick="getYearData(' + value + ')">' + value + '</button>');
+                if(new Date().getFullYear() <= value) {
+                    $('#list-btn').append('<button type="button" class="btn btn-primary mr-4" onclick="getYearData(' + value + ')">' + value + '</button>');
+                }
             });
         })
         .catch(error => console.error(error));
