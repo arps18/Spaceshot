@@ -304,7 +304,7 @@ particlesJS("particles-js", {
                 var start = value.date.format('YYYY-MM-DD')
                 var end = moment(value.date).add(1, 'days').format('YYYY-MM-DD')
                 $("#text-desc").text(value.desc);
-                $('#addBtn').append('<a href="https://calendar.google.com/calendar/r/eventedit?text=' + value.eventName + '&dates='+start+'/'+end+'&details=' + value.desc + '"><button class="btn btnX">Add to Google Calendar</button></a>')
+                $('#addBtn').append('<a href="https://calendar.google.com/calendar/r/eventedit?text=' + value.eventName + '&dates=' + start + '/' + end + '&details=' + value.desc + '"><button class="btn btnX">Add to Google Calendar</button></a>')
                 return false;
             } else {
                 $('#addBtn').empty()
@@ -457,8 +457,8 @@ $(document).ready(function() {
         .then(response => {
             yearList = response.data.data;
             $.each(yearList, function(index, value) {
-                if(new Date().getFullYear() <= value) {
-                    $('#list-btn').append('<button type="button" class="btn btn-primary mr-4" onclick="getYearData(' + value + ')">' + value + '</button>');
+                if (new Date().getFullYear() <= value) {
+                    $('#list-btn').append('<button type="button" class="btn  mr-4" onclick="getYearData(' + value + ')">' + value + '</button>');
                 }
             });
         })

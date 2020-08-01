@@ -14,6 +14,7 @@
     background-color: transparent;
     border-color: white;
     font-weight: bold;
+    color: white;
 }
 
 .btnX {
@@ -33,6 +34,36 @@
     opacity: 0.5;
     padding: 2rem;
     border-radius: 15px;
+}
+
+#astronaut {
+    animation: astronaut 4s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#rocket {
+    animation: astronaut 5s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@-webkit-keyframes astronaut {
+    0% {
+        -webkit-transform: scale(1) translateY(-200px);
+    }
+    100% {
+        -webkit-transform: scale(1) translateY(0);
+    }
+}
+
+@-webkit-keyframes rocket {
+    0% {
+        -webkit-transform: scale(1) translateY(-500px);
+    }
+    100% {
+        -webkit-transform: scale(1) translateY(0);
+    }
 }
 
 body {
