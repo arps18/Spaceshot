@@ -13,6 +13,7 @@
 body {
     margin: 0;
     background-color: #17182f;
+    overflow-x: hidden;
 }
 
 canvas {
