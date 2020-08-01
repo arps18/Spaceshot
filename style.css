@@ -43,6 +43,12 @@
     transform-box: fill-box;
 }
 
+#main {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    color: white;
+}
+
 @-webkit-keyframes astronaut {
     0% {
         -webkit-transform: scale(1) translateY(-200px);
