@@ -126,7 +126,7 @@ span.event-ghost {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    width: 420px;
+    width: 550px;
     margin: 0 auto;
     height: 570px;
     overflow: hidden;
@@ -135,7 +135,7 @@ span.event-ghost {
 
 .header {
     height: 50px;
-    width: 420px;
+    width: 550px;
     background: rgba(66, 66, 66, 1);
     text-align: center;
     position: relative;
@@ -218,7 +218,7 @@ span.event-ghost {
 
 .day {
     display: inline-block;
-    width: 60px;
+    width: 78px;
     padding: 10px;
     text-align: center;
     vertical-align: top;
@@ -263,7 +263,7 @@ span.event-ghost {
     display: inline-block;
     padding: 0;
     margin: 0;
-    width: 5px;
+    width: 7px;
     height: 5px;
     line-height: 5px;
     margin: 0 1px;
@@ -287,7 +287,7 @@ span.event-ghost {
 
 .details {
     position: relative;
-    width: 420px;
+    width: 550px;
     height: 75px;
     background: rgba(164, 164, 164, 1);
     margin-top: 5px;
