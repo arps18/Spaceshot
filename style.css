@@ -16,6 +16,11 @@
     font-weight: bold;
 }
 
+.btnX {
+    background-color: white;
+    font-weight: bold;
+}
+
 .btn:hover {
     background-color: white;
     color: black;

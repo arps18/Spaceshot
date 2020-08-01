@@ -301,10 +301,13 @@ particlesJS("particles-js", {
         var day = this.current.clone().date(dayNumber);
         $.each(eventData, function(index, value) {
             if (day.format('YYYY-MM-DD') == value.date.format('YYYY-MM-DD')) {
-                console.log(value.desc)
+                var start = value.date.format('YYYY-MM-DD')
+                var end = moment(value.date).add(1, 'days').format('YYYY-MM-DD')
                 $("#text-desc").text(value.desc);
+                $('#addBtn').append('<a href="https://calendar.google.com/calendar/r/eventedit?text=' + value.eventName + '&dates='+start+'/'+end+'&details=' + value.desc + '"><button class="btn btnX">Add to Google Calendar</button></a>')
                 return false;
             } else {
+                $('#addBtn').empty()
                 $("#text-desc").text("No Event");
             }
         });
