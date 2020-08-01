@@ -4,12 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPACESHOT</title>
+    <title>SpaceShot</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <!-- CSS only -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .rocketSVG {
+            width: 1000px;
+            height: 600px;
+            display: block;
+            position: absolute;
+        }
+        .rocket {
+            width: 10px;
+            height: 10px;
+            offset-path: path('M 150 500 C 50 500 50 350 50 300 C 50 225 50 200 100 150 C 150 125 150 100 250 100 C 300 100 400 100 450 200 C 500 250 500 400 750 400 C 800 400 900 350 950 250 C 1000 150 950 50 850 50 C 750 50 700 100 650 150 C 600 200 550 350 450 400 C 300 500 200 500 150 500');
+            /* offset-distance: 0%; */
+            animation: fly-rocket 20s linear infinite;
+        }
 
+        @keyframes fly-rocket {
+            from {
+                offset-distance: 0%;
+            }
+            to {
+                offset-distance: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body onload="startTime()">
@@ -40,7 +63,12 @@
         </div>
     </nav> -->
     <!-- Navbar -->
-
+    <div>
+        <svg class="rocketSVG" width="1024px" height="600px" version="1.1">
+            <path fill="transparent" stroke="transparent" stroke-width="1" d="M 150 500 C 50 500 50 350 50 300 C 50 225 50 200 100 150 C 150 125 150 100 250 100 C 300 100 400 100 450 200 C 500 250 500 400 750 400 C 800 400 900 350 950 250 C 1000 150 950 50 850 50 C 750 50 700 100 650 150 C 600 200 550 350 450 400 C 300 500 200 500 150 500 " class="path"></path>
+        </svg>
+        <div class="rocket"><img width="50" height="50" src="assets\rocket.png"></div>
+    </div>
     <!-- Jumbotron -->
     <div id="font">
         SPACESHOT
@@ -170,7 +198,7 @@
     <footer class="page-footer font-small" style="background-color: slategrey;">
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3"> Liftoff 🚀 done by
+        <div class="footer-copyright text-center py-3"> Liftoff 🚀 Done by
             <a href="https://github.com/arps18/Spaceshot.git" target="_blank" style="color: aqua;"> Team MoonShot</a>
         </div>
         <!-- Copyright -->

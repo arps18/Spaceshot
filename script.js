@@ -471,6 +471,7 @@ function getYearData(year, mode) {
     var link = "https://themantomoon.herokuapp.com/getdata/" + year
     axios.get(link)
         .then(response => {
+            eventData = []
             data = response.data.data;
             year = response.data.year;
             const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -482,7 +483,7 @@ function getYearData(year, mode) {
                 var finalDate = year + "-" + month + "-" + date
                 var tag = value.tag
                 var desc = value.desc
-                eventData.push({ eventName: tag, calender: tag, color: 'orange', date: finalDate, desc: desc })
+                eventData.push({ eventName: tag, calendar: 'Events', color: 'orange', date: finalDate, desc: desc })
             });
             console.log(eventData);
             ! function() {
