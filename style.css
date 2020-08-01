@@ -24,11 +24,14 @@ html {
 .btnX {
     background-color: white;
     font-weight: bold;
-    color: navy;
+    color: black;
 }
 
 .btn:hover {
-    background-color: white;
+    background: linear-gradient(to right, transparent 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
     color: black;
     border-color: white;
     font-weight: bold;
