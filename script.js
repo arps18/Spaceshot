@@ -119,7 +119,7 @@ particlesJS("particles-js", {
         this.el = document.querySelector(selector);
         var x = year
         this.events = events;
-        if(x != null) {
+        if (x != null) {
             x = year + '-01-01'
             this.current = moment(x).date(1);
         } else {
@@ -299,8 +299,8 @@ particlesJS("particles-js", {
         var details, arrow;
         var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
         var day = this.current.clone().date(dayNumber);
-        $.each(eventData, function (index, value) {
-            if(day.format('YYYY-MM-DD') == value.date.format('YYYY-MM-DD')) {
+        $.each(eventData, function(index, value) {
+            if (day.format('YYYY-MM-DD') == value.date.format('YYYY-MM-DD')) {
                 console.log(value.desc)
                 $("#text-desc").text(value.desc);
                 return false;
@@ -447,48 +447,48 @@ particlesJS("particles-js", {
     }
 }();
 
-    $(document).ready(function() {
-        var yearList;
-        var link = "https://themantomoon.herokuapp.com/getdata/getYearList"
-        axios.get(link)
-            .then(response => {
-                yearList = response.data.data;
-                $.each(yearList, function (index, value) {
-                    $('#list-btn').append('<button type="button" class="btn btn-primary" onclick="getYearData(' + value + ')">' + value + '</button>');
-                });
-            })
-            .catch(error => console.error(error));
-    });
-    var eventData = []
-    function getYearData(year, mode) {
-        $('#calendar').empty()
-        var link = "https://themantomoon.herokuapp.com/getdata/" + year
-        axios.get(link)
-            .then(response => {
-                data = response.data.data;
-                year = response.data.year;
-                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                $.each(data, function (index, value) {
-                    var dt = value.date;
-                    dt = dt.split(",").slice(0,1).toString().split(" ")
-                    var month = parseInt(monthNames.indexOf(dt[0])) + 1
-                    var date = dt[1]
-                    var finalDate = year + "-" + month + "-" + date
-                    var tag = value.tag
-                    var desc = value.desc
-                    eventData.push({eventName: tag, calender: tag, color: 'orange', date: finalDate, desc: desc})
-                });
-                console.log(eventData)
-                ! function() {
-                    var data = eventData;
-                    if(mode) {
-                        var calendar = new Calendar('#calendar', data, null);
-                    } else {
-                        var calendar = new Calendar('#calendar', data, year);
-                    }
-                }();
-            })
-            .catch(error => console.error(error));
-    }
-    getYearData(new Date().getFullYear(), true)
+$(document).ready(function() {
+    var yearList;
+    var link = "https://themantomoon.herokuapp.com/getdata/getYearList"
+    axios.get(link)
+        .then(response => {
+            yearList = response.data.data;
+            $.each(yearList, function(index, value) {
+                $('#list-btn').append('<button type="button" class="btn btn-primary mr-4" onclick="getYearData(' + value + ')">' + value + '</button>');
+            });
+        })
+        .catch(error => console.error(error));
+});
+var eventData = []
 
+function getYearData(year, mode) {
+    $('#calendar').empty()
+    var link = "https://themantomoon.herokuapp.com/getdata/" + year
+    axios.get(link)
+        .then(response => {
+            data = response.data.data;
+            year = response.data.year;
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            $.each(data, function(index, value) {
+                var dt = value.date;
+                dt = dt.split(",").slice(0, 1).toString().split(" ")
+                var month = parseInt(monthNames.indexOf(dt[0])) + 1
+                var date = dt[1]
+                var finalDate = year + "-" + month + "-" + date
+                var tag = value.tag
+                var desc = value.desc
+                eventData.push({ eventName: tag, calender: tag, color: 'orange', date: finalDate, desc: desc })
+            });
+            console.log(eventData);
+            ! function() {
+                var data = eventData;
+                if (mode) {
+                    var calendar = new Calendar('#calendar', data, null);
+                } else {
+                    var calendar = new Calendar('#calendar', data, year);
+                }
+            }();
+        })
+        .catch(error => console.error(error));
+}
+getYearData(new Date().getFullYear(), true)
