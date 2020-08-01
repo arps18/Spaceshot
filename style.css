@@ -20,6 +20,11 @@ canvas {
     /* vertical-align: bottom; */
 }
 
+#part {
+    width: 100vw;
+    height: 100vh;
+}
+
 
 /* ---- particles.js container ---- */
 
@@ -27,7 +32,7 @@ canvas {
     font-family: "AwakenningPersonalUse-DOLPD";
     color: white;
     width: 100vw;
-    height: 100vh; 
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
