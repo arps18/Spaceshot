@@ -38,7 +38,7 @@
 }
 
 #astronaut {
-    animation: astronaut 4s infinite linear;
+    animation: astronaut 8s infinite linear;
     transform-origin: center;
     transform-box: fill-box;
 }
