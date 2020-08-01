@@ -115,10 +115,16 @@ particlesJS("particles-js", {
 
     var today = moment();
 
-    function Calendar(selector, events) {
+    function Calendar(selector, events, year) {
         this.el = document.querySelector(selector);
+        var x = year
         this.events = events;
-        this.current = moment().date(1);
+        if(x != null) {
+            x = year + '-01-01'
+            this.current = moment(x).date(1);
+        } else {
+            this.current = moment().date(1);
+        }
         this.draw();
         var current = document.querySelector('.today');
         if (current) {
@@ -168,7 +174,7 @@ particlesJS("particles-js", {
         var self = this;
 
         this.events.forEach(function(ev) {
-            ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+            ev.date = moment(ev.date)
         });
 
 
@@ -293,6 +299,15 @@ particlesJS("particles-js", {
         var details, arrow;
         var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
         var day = this.current.clone().date(dayNumber);
+        $.each(eventData, function (index, value) {
+            if(day.format('YYYY-MM-DD') == value.date.format('YYYY-MM-DD')) {
+                console.log(value.desc)
+                $("#text-desc").text(value.desc);
+                return false;
+            } else {
+                $("#text-desc").text("No Event");
+            }
+        });
 
         var currentOpened = document.querySelector('.details');
 
@@ -432,35 +447,48 @@ particlesJS("particles-js", {
     }
 }();
 
-! function() {
-    var data = [
-        { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange' },
-        { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange' },
-        { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
-        { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
-
-        { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
-        { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
-        { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
-        { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
-
-        { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
-        { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
-        { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
-        { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
-
-        { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
-        { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
-        { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
-        { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
-    ];
-
-
-
-    function addDate(ev) {
-
+    $(document).ready(function() {
+        var yearList;
+        var link = "https://themantomoon.herokuapp.com/getdata/getYearList"
+        axios.get(link)
+            .then(response => {
+                yearList = response.data.data;
+                $.each(yearList, function (index, value) {
+                    $('#list-btn').append('<button type="button" class="btn btn-primary" onclick="getYearData(' + value + ')">' + value + '</button>');
+                });
+            })
+            .catch(error => console.error(error));
+    });
+    var eventData = []
+    function getYearData(year, mode) {
+        $('#calendar').empty()
+        var link = "https://themantomoon.herokuapp.com/getdata/" + year
+        axios.get(link)
+            .then(response => {
+                data = response.data.data;
+                year = response.data.year;
+                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                $.each(data, function (index, value) {
+                    var dt = value.date;
+                    dt = dt.split(",").slice(0,1).toString().split(" ")
+                    var month = parseInt(monthNames.indexOf(dt[0])) + 1
+                    var date = dt[1]
+                    var finalDate = year + "-" + month + "-" + date
+                    var tag = value.tag
+                    var desc = value.desc
+                    eventData.push({eventName: tag, calender: tag, color: 'orange', date: finalDate, desc: desc})
+                });
+                console.log(eventData)
+                ! function() {
+                    var data = eventData;
+                    if(mode) {
+                        var calendar = new Calendar('#calendar', data, null);
+                    } else {
+                        var calendar = new Calendar('#calendar', data, year);
+                    }
+                }();
+            })
+            .catch(error => console.error(error));
     }
+    getYearData(new Date().getFullYear(), true)
 
-    var calendar = new Calendar('#calendar', data);
-
-}();
