@@ -468,6 +468,8 @@ var eventData = []
 
 function getYearData(year, mode) {
     $('#calendar').empty()
+    $('#addBtn').empty()
+    $("#text-desc").text("No Event");
     var link = "https://themantomoon.herokuapp.com/getdata/" + year
     axios.get(link)
         .then(response => {
