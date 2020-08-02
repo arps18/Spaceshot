@@ -299,6 +299,8 @@ particlesJS("particles-js", {
         var details, arrow;
         var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
         var day = this.current.clone().date(dayNumber);
+        $('#addBtn').empty()
+        $("#text-desc").text("No Event");
         $.each(eventData, function(index, value) {
             if (day.format('YYYY-MM-DD') == value.date.format('YYYY-MM-DD')) {
                 var start = value.date.format('YYYY-MM-DD')
