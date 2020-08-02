@@ -8,7 +8,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Raleway', sans-serif;
 }
 
 html {
@@ -85,6 +85,15 @@ canvas {
     height: 100vh;
 }
 
+::-moz-selection { /* Code for Firefox */
+    color: black;
+    background: white;
+  }
+  
+  ::selection {
+    color: black;
+    background: white;
+  }
 
 /* ---- particles.js container ---- */
 
@@ -151,7 +160,7 @@ td {
 
 .today {
     color: #FFF;
-    background-color: rgba(0, 0, 0, .25) !important;
+    background-color: #1e2121 !important;
 }
 
 span.number {
@@ -301,6 +310,7 @@ span.event-ghost {
 
 .day.today {
     color: rgba(156, 202, 235, 1);
+    font-weight: bold;
 }
 
 .day-name {
