@@ -145,7 +145,7 @@ td {
 }
 
 .day:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #232626;
     cursor: pointer;
 }
 
@@ -201,7 +201,7 @@ span.event-ghost {
 .header {
     height: 50px;
     width: 550px;
-    background: #008D82;
+    background: #131d1d;
     text-align: center;
     position: relative;
     z-index: 100;
@@ -230,13 +230,13 @@ span.event-ghost {
 
 .left {
     border-width: 7.5px 10px 7.5px 0;
-    border-color: transparent #4B4453 transparent transparent;
+    border-color: transparent #653a97 transparent transparent;
     left: 20px;
 }
 
 .right {
     border-width: 7.5px 0 7.5px 10px;
-    border-color: transparent transparent transparent #4B4453;
+    border-color: transparent transparent transparent #653a97;
     right: 20px;
 }
 
@@ -279,7 +279,7 @@ span.event-ghost {
 }
 
 .week {
-    background: #B0A8B9;
+    background: transparent;
 }
 
 .day {
@@ -289,9 +289,10 @@ span.event-ghost {
     text-align: center;
     vertical-align: top;
     cursor: pointer;
-    background: #296073;
+    background: #1e2121;
     position: relative;
     z-index: 100;
+    color: white;
 }
 
 .day.other {
@@ -355,7 +356,7 @@ span.event-ghost {
     position: relative;
     width: 550px;
     height: 75px;
-    background: rgba(164, 164, 164, 1);
+    background: #653a97;
     margin-top: 5px;
     border-radius: 4px;
 }
@@ -381,7 +382,7 @@ span.event-ghost {
     height: 0px;
     border-style: solid;
     border-width: 0 5px 5px 5px;
-    border-color: transparent transparent rgba(164, 164, 164, 1) transparent;
+    border-color: transparent transparent #653a97 transparent;
     transition: all 0.7s ease;
 }
 
@@ -390,6 +391,7 @@ span.event-ghost {
     padding: 7px 0;
     overflow-y: auto;
     overflow-x: hidden;
+    color: white;
 }
 
 .events.in {
@@ -446,8 +448,9 @@ span.event-ghost {
     bottom: 0;
     width: 100%;
     height: 30px;
-    background: rgb(102, 101, 101);
+    background: #1e2121;
     line-height: 30px;
+    color: white;
 }
 
 .entry {
